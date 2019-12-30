@@ -15,8 +15,23 @@ const router = new Router({
     },
     {
       path:'/home',
-      component: ()=> import('@/components/Home/index.vue')
-    }
+      component: ()=> import('@/components/Home/index.vue'),
+      children:[
+        {
+          path:'',
+          redirect: '/welcome'
+        },
+        {
+          path: '/welcome',
+          component: ()=> import('@/components/Welcome/index.vue')
+        },{
+          path: '/users',
+          component: ()=> import('@/components/User/index.vue')
+        }
+        
+      ]
+    },
+    
   ]
 } )
 
