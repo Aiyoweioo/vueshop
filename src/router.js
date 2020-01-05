@@ -24,9 +24,18 @@ const router = new Router({
         {
           path: '/welcome',
           component: ()=> import('@/components/Welcome/index.vue')
-        },{
+        },
+        {
           path: '/users',
           component: ()=> import('@/components/User/index.vue')
+        },
+        {
+          path: '/rights',
+          component: ()=>import('@/components/Rights/index.vue')
+        },
+        {
+          path:'/roles',
+          component: ()=>import('@/components/Rights/roles.vue')
         }
         
       ]
