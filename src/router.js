@@ -36,6 +36,9 @@ const router = new Router({
         {
           path:'/roles',
           component: ()=>import('@/components/Rights/roles.vue')
+        },{
+          path: '/categories',
+          component: ()=>import('@/components/Goods/Cate/index.vue')
         }
         
       ]

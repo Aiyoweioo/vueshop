@@ -26,7 +26,8 @@ import { Button,
         Tag,
         Tree,
         Select,
-        Option
+        Option,
+        Cascader
     } from 'element-ui'
 
 
@@ -56,6 +57,7 @@ Vue.use(Tag)
 Vue.use(Tree)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Cascader)
 
 //Message弹框、MessageBox弹出框只能全局挂载
 Vue.prototype.$message = Message

@@ -174,6 +174,7 @@ export default {
           pagesize: 2
         },
         userList: [],
+        //总数据条数
         total: 0,
         //控制添加用户对话框的显示与隐藏
         adddDialogVisible: false,
@@ -247,13 +248,13 @@ export default {
       },
       //监听pagesize改变的事件
       handleSizeChange(newSize){
-        this.queryInfo.pagenum = newSize
+        this.queryInfo.pagesize = newSize
         this.getUserList()
       
       },
       //监听页码值改变的事件
       handleCurrentChange(newPage){
-        this.queryInfo.pagesize = newPage
+        this.queryInfo.pagenum = newPage
         this.getUserList()
       },
       //监听switch开关的状态

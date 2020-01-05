@@ -83,11 +83,11 @@
     @close="addRightDialogClosed">
         <!-- 内容主体区 -->
         <el-form :model="addRole" :rules="addFormRoles" ref="addFormRef"
-      label-width="70px">
-        <el-form-item label="角色名称" prop="roleName" :label-width="formLabelWidth">
+      label-width="100px">
+        <el-form-item label="角色名称" prop="roleName" >
           <el-input v-model="addRole.roleName"></el-input>
         </el-form-item>
-        <el-form-item label="角色描述" prop="roleDesc" :label-width="formLabelWidth">
+        <el-form-item label="角色描述" prop="roleDesc" >
           <el-input v-model="addRole.roleDesc"></el-input>
         </el-form-item>  
       </el-form>
@@ -103,11 +103,11 @@
     @close="editRightDialogClosed">
         <!-- 内容主体区 -->
         <el-form :model="editRole" :rules="editFormRoles" ref="editFormRef"
-      label-width="70px">
-        <el-form-item label="角色名称" prop="roleName" :label-width="formLabelWidth">
+      label-width="100px">
+        <el-form-item label="角色名称" prop="roleName" >
           <el-input v-model="editRole.roleName"></el-input>
         </el-form-item>
-        <el-form-item label="角色描述" prop="roleDesc" :label-width="formLabelWidth">
+        <el-form-item label="角色描述" prop="roleDesc" >
           <el-input v-model="editRole.roleDesc"></el-input>
         </el-form-item>  
       </el-form>
@@ -153,8 +153,6 @@ export default {
             { required: true, meesage:'请输入角色名称',trigger: 'blur'}
           ]
         },
-        //设置添加角色的对话框label大小
-        formLabelWidth: '100px',
         //控制编辑角色对话框的显示与隐藏
         editDialogVisible: false,
         //查询得到的角色信息对象
