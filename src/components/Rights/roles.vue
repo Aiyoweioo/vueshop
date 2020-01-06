@@ -335,20 +335,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.el-breadcrumb{
-  margin-bottom: 15px;
-  font-size: 12px;
-}
-.el-card{
-  box-shadow: 0 0 1px rgba(0, 0, 0, .15) !important;
-}
+
 .el-tag{
     margin: 7px;
 }
-.el-table{
-    margin-top: 15px;
-    font-size: 12px;
-}
+
 .bdtop{
     border-top: 1px solid #eee;
 }

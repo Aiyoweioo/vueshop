@@ -395,19 +395,10 @@ export default {
 </script>
 
 <style scoped>
-.el-breadcrumb{
-  margin-bottom: 15px;
-  font-size: 12px;
-}
-.el-card{
-  box-shadow: 0 0 1px rgba(0, 0, 0, .15) !important;
-}
+
 .cat_area{
     margin: 15px 0;
     text-align: left;
-}
-.el-table{
-    margin-top: 15px;
 }
 .el-tag{
     margin: 10px;
