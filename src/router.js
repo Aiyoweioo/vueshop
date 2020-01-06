@@ -36,9 +36,14 @@ const router = new Router({
         {
           path:'/roles',
           component: ()=>import('@/components/Rights/roles.vue')
-        },{
+        },
+        {
           path: '/categories',
           component: ()=>import('@/components/Goods/Cate/index.vue')
+        },
+        {
+          path: '/params',
+          component: ()=>import('@/components/Goods/Params/index.vue')
         }
         
       ]
