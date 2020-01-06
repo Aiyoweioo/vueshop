@@ -150,7 +150,7 @@ export default {
         //添加表单的验证规则
         addFormRoles: {
           roleName: [
-            { required: true, meesage:'请输入角色名称',trigger: 'blur'}
+            { required: true, message:'请输入角色名称',trigger: 'blur'}
           ]
         },
         //控制编辑角色对话框的显示与隐藏
@@ -160,7 +160,7 @@ export default {
         //编辑角色的验证规则
         editFormRoles: {
             roleName:[
-                { required: true, meesage:'请输入角色名称',trigger: 'blur' }
+                { required: true, message:'请输入角色名称',trigger: 'blur' }
             ]
         }
 

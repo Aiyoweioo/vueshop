@@ -9,3 +9,6 @@ html, body, #app{
 .el-popper .el-cascader-panel{
     max-height: 500px!important;
     }
+.ql-editor{
+    min-height: 300px;
+}

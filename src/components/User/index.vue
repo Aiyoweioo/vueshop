@@ -188,19 +188,19 @@ export default {
         //添加表单的验证规则
         addFormRules: {
           username: [
-            { required: true, meesage:'请输入用户名',trigger: 'blur'},
+            { required: true, message:'请输入用户名',trigger: 'blur'},
             { min: 3, max: 10, message: '用户名长度在3~10个字符', trigger: 'blur'}
           ],
           password: [
-            { required: true, meesage:'请输入用户密码',trigger: 'blur'},
+            { required: true, message:'请输入用户密码',trigger: 'blur'},
             { min: 6, max: 15, message: '用户名长度在6~15个字符', trigger: 'blur'}
           ],
           email: [
-            { required: true, meesage:'请输入用户邮箱',trigger: 'blur'},
+            { required: true, message:'请输入用户邮箱',trigger: 'blur'},
             { vaditor: checkEmail, trigger: 'blur'}
           ],
           mobile: [
-            { required: true, meesage:'请输入用户手机',trigger: 'blur'},
+            { required: true, message:'请输入用户手机',trigger: 'blur'},
             { vaditor: checkMobile, trigger: 'blur'}
           ]
         },
@@ -211,11 +211,11 @@ export default {
         //修改表单的验证规则对象
         editFormRules: {
           email: [
-            { required: true, meesage:'请输入邮箱',trigger: 'blur'},
+            { required: true, message:'请输入邮箱',trigger: 'blur'},
             { vaditor: checkEmail, trigger: 'blur'}
           ],
           mobile: [
-            { required: true, meesage:'请输入手机',trigger: 'blur'},
+            { required: true, message:'请输入手机',trigger: 'blur'},
             { vaditor: checkMobile, trigger: 'blur'}
           ]
         },
