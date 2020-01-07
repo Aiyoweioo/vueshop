@@ -12,11 +12,12 @@
             <el-container>
                 <!-- 侧边栏区域 -->
                 <el-aside :width="isCollapse ? '64px' : '200px'">
+                    <!-- 按钮实现折叠展开 -->
                     <div class="toggle-button" @click="toggleCollapse">|||</div>
                     <el-menu background-color="#333744" text-color="#fff" active-text-color="#409eff" 
                     :unique-opened="true" :collapse="isCollapse" :collapse-transition="false" 
                     :router="true" :default-active="activePath">
-                        <!-- 一级菜单 -->
+                        <!-- 一级菜单 index只接收字符串，不接收数值，item.id为数值-->
                     <el-submenu :index="item.id + ''" v-for="item in menuList" :key="item.id">
                         <!-- 一级菜单模板区域 -->
                         <template slot="title">
@@ -41,6 +42,7 @@
                 </el-aside>
                 <!-- 右侧主体内容 -->
                 <el-main>
+                    <!-- 路由占位符 -->
                     <router-view></router-view>
                 </el-main>
             </el-container>
@@ -52,6 +54,7 @@ export default{
     data(){
         return{
             menuList: [],
+            //一级菜单的图标
             iconObj: {
                 '125': 'iconfont icon-user',
                 '103': 'iconfont icon-tijikongjian',
@@ -65,9 +68,9 @@ export default{
             activePath: ''
         }
     },
-    create(){
-        this.getmenuList(),
-        this.activePath = this.sessionStorage.getItem('activePath')
+    created(){
+        this.getMenuList(),
+        this.activePath = window.sessionStorage.getItem('activePath')
     },
     methods:{
         logout(){
@@ -76,7 +79,7 @@ export default{
             this.$router.push('/login')
         },
         //获取所有的菜单
-        async getmenuList(){
+        async getMenuList(){
             const { data: res } = await this.$http.get('menus')
             if(res.meta.status !=200 ) return this.$message.error(res.meta.msg)
             this.menuList = res.data
@@ -87,7 +90,7 @@ export default{
             this.isCollapse = !this.isCollapse
         },
         //保存连接的激活状态
-        saveNavState(){
+        saveNavState(activePath){
             window.sessionStorage.setItem('activePath', activePath)
             this.activePath = activePath
         }
@@ -138,6 +141,7 @@ export default{
     line-height: 24px;
     color:#fff;
     text-align: center;
-    letter-spacing: 2px;
+    letter-spacing: 0.2em;
+    cursor: pointer;
 }
 </style>

@@ -317,10 +317,10 @@ export default {
             const {data: res} = await this.$http.delete('categories/' + id)
 
             if(res.meta.status !== 200){
-            return this.$message.error('删除用户失败！')
+            return this.$message.error('删除分类失败！')
             }
 
-            this.$message.success('删除用户成功！')
+            this.$message.success('删除分类成功！')
             this.getCateList()
             }
             

@@ -261,7 +261,7 @@ export default {
       async userStateChanged(userInfo){
         //console.log(userInfo)
         const {data: res} = await this.$http.put(`users/${userInfo.id}/state/${userInfo.mg_state}`)
-        if(res.meta.msg != 200){
+        if(res.meta.status != 200){
           //传到服务器修改状态失败，因此前端也要将状态恢复为原状态
           userInfo.mg_state != userInfo.mg_state
           return this.$message.error('更新用户状态失败！')
