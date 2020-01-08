@@ -15,7 +15,7 @@
             </el-col>            
         </el-row>
         <!-- 角色列表区域 -->
-      <el-table :data="rolesList" border stripe>
+      <el-table :data="rolesList" border stripe :row-key="rolesList.id">
         <!-- 展开列 -->
         <el-table-column type="expand">
             <template slot-scope="scope">
@@ -37,7 +37,7 @@
                             </el-col>
                             <!-- 渲染三级权限 -->
                             <el-col :span="13">
-                                <el-tag v-for="(item3, i3) in item2.children" :key="item3.id"
+                                <el-tag v-for="item3 in item2.children" :key="item3.id"
                                 type="warning" closable @close="removeRightById(scope.row, item3.id)">
                                     {{ item3.authName }}
                                 </el-tag>
@@ -69,7 +69,7 @@
     @close="setRightDialogClosed">
         <!-- 权限主体内容,为树形控件 -->
         <el-tree :data="rightsList" :props="treeProps" show-checkbox  node-key="id"
-        default-expand-all :default-checked-keys="defKeys" ref="treeRef">
+        default-expand-all :default-checked-keys="defKeys" ref="treeRef" :row-key="rightsList.id">
         </el-tree>
         <!-- 底部确定取消区域 -->
         <span slot="footer" class="dialog-footer">

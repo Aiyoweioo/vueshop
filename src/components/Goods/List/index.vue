@@ -21,7 +21,7 @@
             </el-col>
         </el-row>
         <!-- 表格区域 -->
-        <el-table :data="goodsList" stripe border>
+        <el-table :data="goodsList" stripe border :row-key="goodsList.goods_id">
             <el-table-column type="index"></el-table-column>
             <el-table-column label="商品名称" prop="goods_name"></el-table-column>
             <el-table-column label="商品价格（元）" prop="goods_price" width="120px"></el-table-column>
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'List',
     data(){
@@ -82,9 +83,10 @@ export default {
             if(res.meta.status !== 200 ){
                 return this.$message.error('获取商品列表失败！')
             } 
-            console.log(res.data)
+           
             this.$message.success('获取商品列表成功！')
             this.goodsList = res.data.goods
+            console.log(res.data.goods)
             this.total = res.data.total
         },
         //监听pagesize改变的事件

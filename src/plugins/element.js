@@ -1,4 +1,5 @@
 import Vue from 'vue'
+
 import { Button, 
         Form, 
         FormItem, 
@@ -35,11 +36,10 @@ import { Button,
         Steps,
         CheckboxGroup,
         Checkbox,
-        Upload,
-        Timeline,
-        TimelineItem
+        Upload
     } from 'element-ui'
-
+import Timeline from '@/plugins/timeline/index.js'
+import TimelineItem from '@/plugins/timeline-item/index.js'
 
 Vue.use(Button)
 Vue.use(Form)

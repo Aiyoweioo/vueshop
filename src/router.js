@@ -1,6 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+const Login = () => import(/* webpackChunkName: "login_home_welcome" */ '@/components/Login/index.vue')
+const Home = () => import(/* webpackChunkName: "login_home_welcome" */ '@/components/Home/index.vue')
+const Welcome = () => import(/* webpackChunkName: "login_home_welcome" */ '@/components/Welcome/index.vue')
+
+const User = () => import(/* webpackChunkName: "User_Rights_Roles" */ '@/components/User/index.vue')
+const Rights = () => import(/* webpackChunkName:  "User_Rights_Roles" */ '@/components/Rights/index.vue')
+const Roles = () => import(/* webpackChunkName:  "User_Rights_Roles" */ '@/components/Rights/roles.vue')
+
+const Cate = () => import(/* webpackChunkName:  "Cate_Params" */ '@/components/Goods/Cate/index.vue')
+const Params = () => import(/* webpackChunkName:  "Cate_Params" */ '@/components/Goods/Params/index.vue')
+
+const List = () => import(/* webpackChunkName:  "List_Add" */ '@/components/Goods/List/index.vue')
+const Add = () => import(/* webpackChunkName:  "List_Add" */ '@/components/Goods/Add/index.vue')
+
+const Order = () => import(/* webpackChunkName:  "Order_Report" */ '@/components/Order/index.vue')
+const Report = () => import(/* webpackChunkName:  "Order_Report" */ '@/components/Report/index.vue')
 Vue.use(Router)
 
 const router = new Router({
@@ -11,11 +27,11 @@ const router = new Router({
     },
     {
       path: '/login',
-      component: ()=> import('@/components/Login/index.vue')
+      component: Login
     },
     {
       path:'/home',
-      component: ()=> import('@/components/Home/index.vue'),
+      component: Home,
       children:[
         {
           path:'',
@@ -23,43 +39,43 @@ const router = new Router({
         },
         {
           path: '/welcome',
-          component: ()=> import('@/components/Welcome/index.vue')
+          component: Welcome
         },
         {
           path: '/users',
-          component: ()=> import('@/components/User/index.vue')
+          component: User
         },
         {
           path: '/rights',
-          component: ()=>import('@/components/Rights/index.vue')
+          component: Rights
         },
         {
           path:'/roles',
-          component: ()=>import('@/components/Rights/roles.vue')
+          component: Roles
         },
         {
           path: '/categories',
-          component: ()=>import('@/components/Goods/Cate/index.vue')
+          component: Cate
         },
         {
           path: '/params',
-          component: ()=>import('@/components/Goods/Params/index.vue')
+          component: Params
         },
         {
           path: '/goods',
-          component: ()=>import('@/components/Goods/List/index.vue')
+          component: List
         },
         {
           path: '/goods/add',
-          component: ()=>import('@/components/Goods/Add/index.vue')
+          component: Add
         },
         {
           path: '/orders',
-          component: ()=>import('@/components/Order/index.vue')
+          component: Order
         },
         {
           path: '/reports',
-          component: ()=>import('@/components/Report/index.vue')
+          component: Report
         }
         
       ]

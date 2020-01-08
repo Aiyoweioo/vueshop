@@ -22,7 +22,7 @@
         </el-col>
       </el-row>
       <!-- 用户列表区域 -->
-      <el-table :data="userList" border stripe>
+      <el-table :data="userList" border stripe :row-key="userList.id">
         <el-table-column type="index"></el-table-column>
         <el-table-column prop="username" label="姓名">
         </el-table-column>
@@ -244,7 +244,7 @@ export default {
           } 
           this.userList = res.data.users
           this.total = res.data.total
-        console.log(res)
+          console.log(this.userList)
       },
       //监听pagesize改变的事件
       handleSizeChange(newSize){

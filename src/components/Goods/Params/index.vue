@@ -29,7 +29,7 @@
                     <el-button type="primary" size="mini" :disabled="isBtnDisabled"
                     @click="addDialogVisible= true">添加参数</el-button>
                     <!-- 动态参数表格 -->
-                    <el-table :data="manyTableData" border stripe>
+                    <el-table :data="manyTableData" border stripe :row-key="manyTableData.attr_id">
                         <!-- 展开行-->
                         <el-table-column type="expand">
                             <template slot-scope="scope">
@@ -66,7 +66,7 @@
                     <el-button type="primary" size="mini" :disabled="isBtnDisabled"
                     @click="addDialogVisible= true">添加属性</el-button>
                     <!-- 静态属性表格 -->
-                    <el-table :data="onlyTableData" border stripe>
+                    <el-table :data="onlyTableData" border stripe :row-key="onlyTableData.attr_id">
                         <!-- 展开行-->
                         <el-table-column type="expand">
                             <template slot-scope="scope">
@@ -287,9 +287,9 @@ export default {
             })
         },
         //点击弹出修改对话框
-        async showEditDialog(attr_id){
+        async showEditDialog(attrId){
             //查询当前参数的信息
-            const {data: res} = await this.$http.get(`categories/${this.cateId}/attributes/${attr_id}`,{
+            const {data: res} = await this.$http.get(`categories/${this.cateId}/attributes/${attrId}`,{
                 params:{attr_sel: this.activeName}
             })
             if(res.meta.status !== 200){
@@ -319,7 +319,7 @@ export default {
             })
         },
         //根据id删除对应的参数
-        async removeParams(attr_id){
+        async removeParams(attrId){
             //询问用户是否删除数据
             const confirmResult = await this.$confirm('此操作将永久删除该参数 是否继续?', '提示', {
             confirmButtonText: '确定',
@@ -335,7 +335,7 @@ export default {
             return this.$message.info('已取消删除')
             }
             
-            const {data: res} = await this.$http.delete(`categories/${this.cateId}/attributes/${attr_id}`)
+            const {data: res} = await this.$http.delete(`categories/${this.cateId}/attributes/${attrId}`)
 
             if(res.meta.status !== 200){
             return this.$message.error('删除参数失败！')

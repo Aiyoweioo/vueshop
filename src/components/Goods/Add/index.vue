@@ -98,11 +98,6 @@
 </template>
 
 <script>
-//导入富文本编辑器对应的样式
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import 'quill/dist/quill.bubble.css'
-import { quillEditor} from 'vue-quill-editor'
 
 //导入深拷贝
 import _ from 'lodash'
@@ -165,9 +160,6 @@ export default {
     },
     created(){
         this.getCateList()
-    },
-    components: {
-        quillEditor
     },
     computed:{
         //三级分类
