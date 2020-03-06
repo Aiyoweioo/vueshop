@@ -2,9 +2,9 @@
   <div>
     <!-- 面包屑导航区域 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>商品管理</el-breadcrumb-item>
-      <el-breadcrumb-item>参数列表</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item>商品管理</el-breadcrumb-item>
+        <el-breadcrumb-item>参数列表</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 卡片视图区域 -->    
     <el-card class="box-card">
@@ -29,7 +29,7 @@
                     <el-button type="primary" size="mini" :disabled="isBtnDisabled"
                     @click="addDialogVisible= true">添加参数</el-button>
                     <!-- 动态参数表格 -->
-                    <el-table :data="manyTableData" border stripe :row-key="manyTableData.attr_id">
+                    <el-table :data="manyTableData" :row-key="manyTableData.attr_id">
                         <!-- 展开行-->
                         <el-table-column type="expand">
                             <template slot-scope="scope">
@@ -47,12 +47,12 @@
                             </template>
                         </el-table-column>
                         <!-- 索引列 -->
-                        <el-table-column type="index"></el-table-column>
-                        <el-table-column label="参数名称" prop="attr_name"></el-table-column>
-                        <el-table-column label="操作">
+                        <el-table-column type="index" header-align="center"></el-table-column>
+                        <el-table-column label="参数名称" prop="attr_name" header-align="center"></el-table-column>
+                        <el-table-column label="操作" header-align="center">
                             <template slot-scope="scope">
                                 <el-button type="primary" icon="el-icon-edit" size="mini"
-                                @click="showEditDialog(scope.row.attr_id)">编辑</el-button>
+                                @click="showEditDialog(scope.row.attr_id)" style="margin-right:40px;">编辑</el-button>
                                 <el-button type="danger" icon="el-icon-delete" size="mini"
                                 @click="removeParams(scope.row.attr_id)">删除</el-button>
                             </template>
@@ -66,7 +66,7 @@
                     <el-button type="primary" size="mini" :disabled="isBtnDisabled"
                     @click="addDialogVisible= true">添加属性</el-button>
                     <!-- 静态属性表格 -->
-                    <el-table :data="onlyTableData" border stripe :row-key="onlyTableData.attr_id">
+                    <el-table :data="onlyTableData"  :row-key="onlyTableData.attr_id">
                         <!-- 展开行-->
                         <el-table-column type="expand">
                             <template slot-scope="scope">
@@ -84,21 +84,19 @@
                             </template>
                         </el-table-column>
                         <!-- 索引列 -->
-                        <el-table-column type="index"></el-table-column>
-                        <el-table-column label="属性名称" prop="attr_name"></el-table-column>
-                        <el-table-column label="操作">
+                        <el-table-column type="index" header-align="center"></el-table-column>
+                        <el-table-column label="属性名称" prop="attr_name" header-align="center"></el-table-column>
+                        <el-table-column label="操作" header-align="center">
                             <template slot-scope="scope">
                                 <el-button type="primary" icon="el-icon-edit" size="mini"
-                                @click="showEditDialog(scope.row.attr_id)">编辑</el-button>
+                                @click="showEditDialog(scope.row.attr_id)" style="margin-right:40px;">编辑</el-button>
                                 <el-button type="danger" icon="el-icon-delete" size="mini"
                                 @click="removeParams(scope.row.attr_id)">删除</el-button>
                             </template>
                         </el-table-column>
-                    </el-table>
-                
-                </el-tab-pane>
-               
-            </el-tabs>
+                        </el-table>
+                    </el-tab-pane>
+                </el-tabs>
             </el-col>
         </el-row>
     </el-card>
@@ -247,7 +245,7 @@ export default {
             if(res.meta.status != 200){
                 return this.$message.error('获取商品分类列表失败！')
             }
-            console.log(res.data)
+            // console.log(res.data)
             res.data.forEach(item =>{
                 //由于新添加参数的attr_vals 为空，若不进行三元表达式判断，直接分割会出现['']，解决attr_vals为空字符串的问题 
                 item.attr_vals = item.attr_vals? item.attr_vals.split(' ') : []
@@ -257,7 +255,7 @@ export default {
                 item.inputValue = ''
 
             })
-            console.log(res.data)
+            // console.log(res.data)
             if(this.activeName === "many"){
                 this.manyTableData = res.data
             }else{
@@ -395,7 +393,6 @@ export default {
 </script>
 
 <style scoped>
-
 .cat_area{
     margin: 15px 0;
     text-align: left;
@@ -415,4 +412,5 @@ export default {
     padding-top: 0;
     padding-bottom: 0;
   }
+      
 </style>

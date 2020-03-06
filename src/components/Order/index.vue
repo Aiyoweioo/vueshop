@@ -17,43 +17,51 @@
             </el-col>
         </el-row>
         <!-- 订单表格 -->
-        <el-table :data="orderList" border stripe :row-key="orderList.order_id">
-            <el-table-column type="index"></el-table-column>
-            <el-table-column label="订单编号" prop="order_number"></el-table-column>
-            <el-table-column label="订单价格" prop="order_price"></el-table-column>
-            <el-table-column label="是否付款">
-                <template slot-scope="scope">
-                    <el-tag v-if="scope.row.pay_status === '1'" type="success">已付款</el-tag>
-                    <el-tag v-if="scope.row.pay_status === '0'" type="danger">未付款</el-tag>
-                </template>
-            </el-table-column>
-            <el-table-column label="是否发货">
-                <template slot-scope="scope">
-                {{ scope.row.is_send}}
-                </template>
-            </el-table-column>
-            <el-table-column label="下单时间" prop="create_time">
-            </el-table-column>
-            <el-table-column label="操作">
-                <template>
-                    <el-button icon="el-icon-edit" type="primary"
-                    @click="editBox"></el-button>
-                    <el-button icon="el-icon-location" type="success"
-                    @click="showProgressBox"></el-button>
-                </template>
-            </el-table-column>
-        </el-table>
+        <el-row>
+            <el-table :data="orderList" border stripe :row-key="orderList.order_id">
+                <el-table-column type="index" header-align="center"></el-table-column>
+                <el-table-column label="订单编号" prop="order_number" header-align="center"></el-table-column>
+                <el-table-column label="订单价格" prop="order_price" header-align="center"></el-table-column>
+                <el-table-column label="是否付款" header-align="center">
+                    <template slot-scope="scope">
+                        <el-tag v-if="scope.row.pay_status === '1'" type="success">已付款</el-tag>
+                        <el-tag v-if="scope.row.pay_status === '0'" type="danger">未付款</el-tag>
+                    </template>
+                </el-table-column>
+                <el-table-column label="是否发货" header-align="center">
+                    <template slot-scope="scope">
+                    {{ scope.row.is_send}}
+                    </template>
+                </el-table-column>
+                <el-table-column label="下单时间" header-align="center" width="120">
+                    <template slot-scope="scope">
+                         {{ scope.row.create_time | dateFormat }}
+                    </template>
+                </el-table-column>
+                <el-table-column label="操作" header-align="center" :resizable="false" width="180">
+                    <template>
+                        <el-button icon="el-icon-edit" type="primary"
+                        @click="editBox"></el-button>
+                        <el-button icon="el-icon-location" type="success"
+                        @click="showProgressBox"></el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+        </el-row>
 
-        <!-- 分页功能 -->
-        <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page="queryInfo.pagenum"
-            :page-sizes="[5, 10, 15]"
-            :page-size="queryInfo.pagesize"
-            layout="total, sizes, prev, pager, next, jumper"
-            :total="total">
-        </el-pagination>
+        <el-row>
+         <!-- 分页功能 -->
+            <el-pagination
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page="queryInfo.pagenum"
+                :page-sizes="[5, 10, 15]"
+                :page-size="queryInfo.pagesize"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="total">
+            </el-pagination>
+        </el-row>
+
     </el-card>
 
     <!--编辑地址的对话框  -->
@@ -173,7 +181,7 @@ export default {
         },
         //监听物流对话框的关闭事件
         progressDialogClosed(){
-
+            this.progressDialogVisible = false
         }
         
     }

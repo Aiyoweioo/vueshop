@@ -13,11 +13,10 @@
                 <el-button type="primary"  class="fleft" @click="showAddCateDialog()">添加分类</el-button>
             </el-col>
         </el-row>
-        
 
         <!-- 用户列表区域 -->
         <tree-table :data="cateList" :columns="columns" :selection-type="false"
-        :expand-type="false" show-index index-text="#" border
+        :expand-type="false" show-index index-text="#" border stripe
         :show-row-hover="false" class="treeTable">
             <!-- 是否有效 -->
             <template slot="isok" slot-scope="scope">
@@ -112,7 +111,7 @@ export default {
             columns: [
                 {
                     label: '分类名称',
-                    prop: 'cat_name'                   
+                    prop: 'cat_name'                
                 },
                 {
                     label: '是否有效',
@@ -190,9 +189,6 @@ export default {
             //console.log(res.data.result)
             this.cateList = res.data.result
             this.total = res.data.total
-            
-        
-        
         },
         //监听pagesize改变
         handleSizeChange(newSize){
@@ -225,7 +221,7 @@ export default {
                 return this.$message.error('获取父级分类数据失败')
             }
             this.parentCateList = res.data
-            console.log(this.parentCateList)
+            // console.log(this.parentCateList)
         
         },
         //级联选择器的父级分类列表选择项发生变化触发这个函数
@@ -274,7 +270,7 @@ export default {
             return this.$message.error('查询分类信息失败！')
             }
             this.editDialogVisible = true
-            console.log(res.data)
+            // console.log(res.data)
             this.editCateForm = res.data
         },
         //根据id编辑对应的分类信息
@@ -348,6 +344,13 @@ export default {
 }
 
 .treeTable{
-    margin-top: 15px
+    margin-top: 15px;
+    /deep/ .zk-table__header-cell {
+        text-align:center;
+        color: #909399;
+    }
+    /deep/ .zk-table__body-cell {
+        color: #606266;
+    }
 }
 </style>

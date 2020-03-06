@@ -219,7 +219,7 @@ export default {
                     return this.$message.error('获取属性列表失败！')
                 }
                 this.onlyTableData = res.data
-                console.log(res.data)
+                // console.log(res.data)
                 
             }
 

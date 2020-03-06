@@ -36,11 +36,11 @@ import { Button,
         Steps,
         CheckboxGroup,
         Checkbox,
-        Upload
+        Upload,
+        Notification
     } from 'element-ui'
 import Timeline from '@/plugins/timeline/index.js'
 import TimelineItem from '@/plugins/timeline-item/index.js'
-
 Vue.use(Button)
 Vue.use(Form)
 Vue.use(FormItem)
@@ -78,6 +78,7 @@ Vue.use(Checkbox)
 Vue.use(Upload)
 Vue.use(Timeline)
 Vue.use(TimelineItem)
-//Message弹框、MessageBox弹出框只能全局挂载
+//Message弹框、MessageBox弹出框、Notification只能全局挂载
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
+Vue.prototype.$notify = Notification

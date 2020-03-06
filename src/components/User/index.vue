@@ -3,8 +3,8 @@
     <!-- 面包屑导航区域 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-      <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+      <el-breadcrumb-item>用户管理</el-breadcrumb-item>
+      <el-breadcrumb-item>用户列表</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 卡片视图区域 -->    
     <el-card class="box-card">
@@ -21,25 +21,22 @@
           <el-button type="primary" @click="adddDialogVisible = true">添加用户</el-button>
         </el-col>
       </el-row>
+
       <!-- 用户列表区域 -->
       <el-table :data="userList" border stripe :row-key="userList.id">
-        <el-table-column type="index"></el-table-column>
-        <el-table-column prop="username" label="姓名">
-        </el-table-column>
-        <el-table-column prop="email" label="邮箱">
-        </el-table-column>
-        <el-table-column prop="mobile" label="电话">
-        </el-table-column>
-        <el-table-column prop="role_name" label="角色">
-        </el-table-column>
-        <el-table-column label="状态">
+        <el-table-column type="index" header-align="center"></el-table-column>
+        <el-table-column prop="username" label="姓名" header-align="center"></el-table-column>
+        <el-table-column prop="email" label="邮箱" header-align="center"></el-table-column>
+        <el-table-column prop="mobile" label="电话" header-align="center"></el-table-column>
+        <el-table-column prop="role_name" label="角色" header-align="center"></el-table-column>
+        <el-table-column label="状态" header-align="center" width="100px">
           <!-- 定义作用域插槽，通过slot-scope接收当前的数据，然后在v-model绑定对应的属性值 -->
           <template slot-scope="scope">
             <el-switch v-model="scope.row.mg_state" @change="userStateChanged(scope.row)">
             </el-switch>
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="180px">
+        <el-table-column label="操作" width="200px" header-align="center" :resizable="false">
           <template slot-scope="scope">
             <!-- 修改button -->
             <el-button type="primary" icon="el-icon-edit" size="mini" 
@@ -55,7 +52,7 @@
             </el-tooltip>
           </template>
         </el-table-column>
-    </el-table>
+      </el-table>
       <!--分页区域  -->
       <el-pagination
         @size-change="handleSizeChange"
@@ -171,7 +168,7 @@ export default {
           //当前的页数
           pagenum: 1,
           //当前每页显示多少条数据
-          pagesize: 2
+          pagesize: 5
         },
         userList: [],
         //总数据条数
@@ -244,7 +241,7 @@ export default {
           } 
           this.userList = res.data.users
           this.total = res.data.total
-          console.log(this.userList)
+          // console.log(this.userList)
       },
       //监听pagesize改变的事件
       handleSizeChange(newSize){

@@ -20,25 +20,27 @@
             <el-button type="primary" @click="goAddPage()">添加商品</el-button>
             </el-col>
         </el-row>
+        <el-row>
+            <el-table :data="goodsList" stripe border :row-key="goodsList.goods_id">
+                <el-table-column type="index" header-align="center"></el-table-column>
+                <el-table-column label="商品名称" prop="goods_name" header-align="center"></el-table-column>
+                <el-table-column label="商品价格（元）" prop="goods_price" width="120px" header-align="center" :resizable="false"></el-table-column>
+                <el-table-column label="商品重量" prop="goods_weight" width="100px" header-align="center" :resizable="false"></el-table-column>
+                <el-table-column label="创建时间" width="150px" header-align="center">
+                    <template slot-scope="scope">
+                        {{scope.row.add_time | dateFormat}}
+                    </template>
+                </el-table-column>
+                <el-table-column label="操作" width="200px" header-align="center" :resizable="false">
+                    <template slot-scope="scope">
+                        <el-button type="primary" icon="el-icon-edit"></el-button>
+                        <el-button type="danger" icon="el-icon-delete" @click="removeById(scope.row.goods_id)"></el-button>
+                    </template> 
+                </el-table-column>
+            </el-table>
+        </el-row>
         <!-- 表格区域 -->
-        <el-table :data="goodsList" stripe border :row-key="goodsList.goods_id">
-            <el-table-column type="index"></el-table-column>
-            <el-table-column label="商品名称" prop="goods_name"></el-table-column>
-            <el-table-column label="商品价格（元）" prop="goods_price" width="120px"></el-table-column>
-            <el-table-column label="商品重量" prop="goods_weight" width="90px"></el-table-column>
-            <el-table-column label="创建时间" width="150px">
-                <template slot-scope="scope">
-                    {{scope.row.add_time | dateFormat}}
-                </template>
-            </el-table-column>
-            <el-table-column label="操作" width="150px">
-                <template slot-scope="scope">
-                    <el-button type="primary" icon="el-icon-edit"></el-button>
-                    <el-button type="danger" icon="el-icon-delete" @click="removeById(scope.row.goods_id)"></el-button>
-                </template>
-                
-            </el-table-column>
-        </el-table>
+
         <!-- 分页区域 -->
         <el-pagination
             @size-change="handleSizeChange"
@@ -86,7 +88,7 @@ export default {
            
             this.$message.success('获取商品列表成功！')
             this.goodsList = res.data.goods
-            console.log(res.data.goods)
+            // console.log(res.data.goods)
             this.total = res.data.total
         },
         //监听pagesize改变的事件
@@ -138,5 +140,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
 </style>

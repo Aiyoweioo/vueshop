@@ -1,10 +1,11 @@
 
 <template>
   <div class="login_container">
-      <div class="login_box">
+      <div>
+          <div class="login_box">
             <div class="avatar_box">
                 <!-- 头像区 -->
-                <img src="@/assets/logo.png" alt="">              
+                <img src="/image/cat.png" alt="">              
             </div>
             <!-- 表单区 -->
             <el-form ref="loginFormRef" :rules="loginFormRules" :model="loginForm" label-width="0px" class="login_form">
@@ -23,6 +24,8 @@
                 </el-form-item>
             </el-form>
       </div>
+      </div>
+            
   </div>
 </template>
 
@@ -46,15 +49,20 @@ export default {
                     { required: true, message: '请输入密码', trigger: 'blur'},
                     { min: 6, max: 15, message: '长度在6到15个字符', trigger: 'blur'}
                 ]
-            }
-
-            
+            },
+            // 提示
+            notiftyObj: null
+        }
+    },
+    mounted () {
+        if (!window.sessionStorage.getItem('notifyLogin')) {
+            this.webShopTip()
         }
     },
     methods:{
         //点击重置登录表单
         resetLoginForm(){
-           // console.log(this);//打印出$refs.loginFormRef的内容
+           // console.log(this);// 打印出$refs.loginFormRef的内容
            this.$refs.loginFormRef.resetFields();
         },
         //表单预验证
@@ -64,14 +72,30 @@ export default {
                 const { data: res } = await this.$http.post('login', this.loginForm);
                 if(res.meta.status != 200) return this.$message.error('登陆失败');
                 this.$message.success('登陆成功');
+                if (this.notifyObj) {
+                    this.notifyObj.close();
+                    }
+                this.notifyObj = null
                 //登陆成功后将token保存到客户端的sessionStorage
                 //项目除了登录之外的其他api接口，必须在登录之后才能访问
                 //token只能在当前网站打开期间生效，所以在token保存在sessionStorage中
                 //通过编程式导航跳转到后台主页，路由地址是/home
-                console.log(res);
+                // console.log(res);
                 window.sessionStorage.setItem('token', res.data.token);
+                if (window.sessionStorage.getItem('notifyLogin' !== 'null')) {
+                    window.sessionStorage.removeItem('notifyLogin')
+                }
                 this.$router.push('/home');
             })
+        },
+        // 登录提示
+        webShopTip () {
+            this.notifyObj = this.$notify.info({
+                title: '提示',
+                message: '登陆账号:admin 密码:123456',
+                duration: 0
+            });
+            window.sessionStorage.setItem('notifyLogin',this.notifyObj.message)
         }
     }
 }
@@ -79,7 +103,7 @@ export default {
 
 <style lang="less" scoped>
 .login_container{
-    background-color: #2b4b6b;
+    background:url(/image/login_bg.jpg)  no-repeat center center;
     height:100%;
 }
 .login_box{
@@ -126,4 +150,5 @@ export default {
     padding: 0 20px;
     box-sizing: border-box;
 }
+
 </style>
