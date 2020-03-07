@@ -51,5 +51,44 @@ src源码目录
 - 通过@babel/plugin-syntax-dynamic-import实现路由懒加载
 
 # 安装教程
-1. 该项目为前后端分离项目，访问本地访问接口需搭建后台环境，后台项目vue-shop-server
+1. 该项目为前后端分离项目，访问本地访问接口需搭建后台环境，后台项目vue-shop-server:https://gitee.com/wBekvam/vueShop-api-server.git
 2. clone项目到本地，然后npm install --> npm run serve
+
+# 项目效果
+## 登录界面
+![avator](./项目效果/登录界面.png)
+## 欢迎界面
+![avator](./项目效果/欢迎界面.png)
+## 角色列表界面
+![avator](./项目效果/角色列表界面.png)
+## 权限列表界面
+![avator](./项目效果/角色列表界面.png)
+## 订单列表界面
+![avator](./项目效果/订单列表界面.png)
+![avator](./项目效果/查看物流进度界面.png)
+## 用户管理界面
+![avator](./项目效果/用户管理页面.png)
+## 商品分类界面
+![avator](./项目效果/商品分类界面.png)
+## 商品参数界面
+静态参数
+![avator](./项目效果/商品静态参数界面.png)
+动态参数
+![avator](./项目效果/商品动态参数界面.png)
+## 商品列表界面
+![avator](./项目效果/商品列表界面.png)
+## 商品添加界面
+商品基本信息
+![avator](./项目效果/添加商品界面.png)
+商品参数
+![avator](./项目效果/添加商品参数界面.png)
+商品属性
+![avator](./项目效果/添加商品属性界面.png)
+商品图片
+![avator](./项目效果/商品图片上传界面.png)
+商品内容
+![avator](./项目效果/添加商品内容界面.png)
+## 数据报表界面
+![avator](./项目效果/数据报表界面.png)
+## production模式下包大小
+![avator](./项目效果/build后的文件大小.png)

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>vueshop后台管理系统</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="vueshop%e5%90%8e%e5%8f%b0%e7%ae%a1%e7%90%86%e7%b3%bb%e7%bb%9f">vueshop后台管理系统</h1>
+<h1 id="%e6%8a%80%e6%9c%af%e9%80%89%e5%9e%8b">技术选型</h1>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>说明</th>
+<th>官网</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vue</td>
+<td>前端框架</td>
+<td><a href="https://vuejs.org/">https://vuejs.org/</a></td>
+</tr>
+<tr>
+<td>Vue-router</td>
+<td>路由框架</td>
+<td><a href="https://router.vuejs.org/">https://router.vuejs.org/</a></td>
+</tr>
+<tr>
+<td>Vuex</td>
+<td>全局状态管理框架</td>
+<td><a href="https://vuex.vuejs.org/">https://vuex.vuejs.org/</a></td>
+</tr>
+<tr>
+<td>Element</td>
+<td>前端UI框架</td>
+<td><a href="https://element.eleme.io/">https://element.eleme.io/</a></td>
+</tr>
+<tr>
+<td>E-charts</td>
+<td>图表框架</td>
+<td><a href="https://www.echartsjs.com/zh/index.html">https://www.echartsjs.com/zh/index.html</a></td>
+</tr>
+<tr>
+<td>vue-quill-editor</td>
+<td>富文本编辑器</td>
+<td><a href="https://github.com/surmon-china/vue-quill-editor">https://github.com/surmon-china/vue-quill-editor</a></td>
+</tr>
+<tr>
+<td>nprogress</td>
+<td>进度条控件</td>
+<td><a href="https://github.com/rstacruz/nprogress">https://github.com/rstacruz/nprogress</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="%e9%a1%b9%e7%9b%ae%e5%b8%83%e5%b1%80">项目布局</h1>
+<p>src源码目录
+—— components 页面</p>
+<ul>
+<li>Goods 商品管理
+<ul>
+<li>Add 添加商品</li>
+<li>Cate 商品分类</li>
+<li>List 商品列表</li>
+<li>Params 参数列表</li>
+</ul>
+</li>
+<li>Home 主页</li>
+<li>Login 登录页面</li>
+<li>Order 订单页面</li>
+<li>Report 数据统计</li>
+<li>Rights 权限管理
+<ul>
+<li>权限列表</li>
+<li>角色列表</li>
+</ul>
+</li>
+<li>User 用户管理</li>
+<li>Welcome 欢迎页面
+—— plugins 插件</li>
+<li>timeline 时间轴</li>
+<li>timeline-item</li>
+<li>element.js 按需导入Element
+—— assets 静态图片资源文件</li>
+</ul>
+<h1 id="%e5%8a%9f%e8%83%bd%e8%ae%a1%e5%88%92">功能计划</h1>
+<ul>
+<li>系统登录：token方式</li>
+<li>用户管理：新建用户、删除用户、修改用户</li>
+<li>商品管理：添加商品、商品列表、商品分类、商品参数列表</li>
+<li>订单管理： 订单编号、订单价格、是否发货、下单时间、物流进度</li>
+<li>权限管理：新建角色、查看角色、编辑角色、删除角色、分配权限</li>
+<li>数据统计: 用户来源</li>
+</ul>
+<h1 id="%e9%a1%b9%e7%9b%ae%e4%bc%98%e5%8c%96">项目优化</h1>
+<ul>
+<li>chainWebpack自定义打包入口</li>
+<li>通过webpack的externals加载外部CDN资源</li>
+<li>按需导入/CDN导入Element UI</li>
+<li>首页html根据模式渲染标题和CDN加载</li>
+<li>通过@babel/plugin-syntax-dynamic-import实现路由懒加载</li>
+</ul>
+<h1 id="%e5%ae%89%e8%a3%85%e6%95%99%e7%a8%8b">安装教程</h1>
+<ol>
+<li>该项目为前后端分离项目，访问本地访问接口需搭建后台环境，后台项目vue-shop-server:<a href="https://gitee.com/wBekvam/vueShop-api-server.git">https://gitee.com/wBekvam/vueShop-api-server.git</a></li>
+<li>clone项目到本地，然后npm install --&gt; npm run serve</li>
+</ol>
+<h1 id="%e9%a1%b9%e7%9b%ae%e6%95%88%e6%9e%9c">项目效果</h1>
+<h2 id="%e7%99%bb%e5%bd%95%e7%95%8c%e9%9d%a2">登录界面</h2>
+<p><img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2.png" alt="avator"></p>
+<h2 id="%e6%ac%a2%e8%bf%8e%e7%95%8c%e9%9d%a2">欢迎界面</h2>
+<p><img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E6%AC%A2%E8%BF%8E%E7%95%8C%E9%9D%A2.png" alt="avator"></p>
+<h2 id="%e8%a7%92%e8%89%b2%e5%88%97%e8%a1%a8%e7%95%8c%e9%9d%a2">角色列表界面</h2>
+<p><img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E8%A7%92%E8%89%B2%E5%88%97%E8%A1%A8%E7%95%8C%E9%9D%A2.png" alt="avator"></p>
+<h2 id="%e6%9d%83%e9%99%90%e5%88%97%e8%a1%a8%e7%95%8c%e9%9d%a2">权限列表界面</h2>
+<p><img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E8%A7%92%E8%89%B2%E5%88%97%E8%A1%A8%E7%95%8C%E9%9D%A2.png" alt="avator"></p>
+<h2 id="%e8%ae%a2%e5%8d%95%e5%88%97%e8%a1%a8%e7%95%8c%e9%9d%a2">订单列表界面</h2>
+<p><img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E8%AE%A2%E5%8D%95%E5%88%97%E8%A1%A8%E7%95%8C%E9%9D%A2.png" alt="avator">
+<img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E6%9F%A5%E7%9C%8B%E7%89%A9%E6%B5%81%E8%BF%9B%E5%BA%A6%E7%95%8C%E9%9D%A2.png" alt="avator"></p>
+<h2 id="%e7%94%a8%e6%88%b7%e7%ae%a1%e7%90%86%e7%95%8c%e9%9d%a2">用户管理界面</h2>
+<p><img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2.png" alt="avator"></p>
+<h2 id="%e5%95%86%e5%93%81%e5%88%86%e7%b1%bb%e7%95%8c%e9%9d%a2">商品分类界面</h2>
+<p><img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E5%95%86%E5%93%81%E5%88%86%E7%B1%BB%E7%95%8C%E9%9D%A2.png" alt="avator"></p>
+<h2 id="%e5%95%86%e5%93%81%e5%8f%82%e6%95%b0%e7%95%8c%e9%9d%a2">商品参数界面</h2>
+<p>静态参数
+<img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E5%95%86%E5%93%81%E9%9D%99%E6%80%81%E5%8F%82%E6%95%B0%E7%95%8C%E9%9D%A2.png" alt="avator">
+动态参数
+<img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E5%95%86%E5%93%81%E5%8A%A8%E6%80%81%E5%8F%82%E6%95%B0%E7%95%8C%E9%9D%A2.png" alt="avator"></p>
+<h2 id="%e5%95%86%e5%93%81%e5%88%97%e8%a1%a8%e7%95%8c%e9%9d%a2">商品列表界面</h2>
+<p><img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E5%95%86%E5%93%81%E5%88%97%E8%A1%A8%E7%95%8C%E9%9D%A2.png" alt="avator"></p>
+<h2 id="%e5%95%86%e5%93%81%e6%b7%bb%e5%8a%a0%e7%95%8c%e9%9d%a2">商品添加界面</h2>
+<p>商品基本信息
+<img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E6%B7%BB%E5%8A%A0%E5%95%86%E5%93%81%E7%95%8C%E9%9D%A2.png" alt="avator">
+商品参数
+<img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E6%B7%BB%E5%8A%A0%E5%95%86%E5%93%81%E5%8F%82%E6%95%B0%E7%95%8C%E9%9D%A2.png" alt="avator">
+商品属性
+<img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E6%B7%BB%E5%8A%A0%E5%95%86%E5%93%81%E5%B1%9E%E6%80%A7%E7%95%8C%E9%9D%A2.png" alt="avator">
+商品图片
+<img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E5%95%86%E5%93%81%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E7%95%8C%E9%9D%A2.png" alt="avator">
+商品内容
+<img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E6%B7%BB%E5%8A%A0%E5%95%86%E5%93%81%E5%86%85%E5%AE%B9%E7%95%8C%E9%9D%A2.png" alt="avator"></p>
+<h2 id="%e6%95%b0%e6%8d%ae%e6%8a%a5%e8%a1%a8%e7%95%8c%e9%9d%a2">数据报表界面</h2>
+<p><img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\%E6%95%B0%E6%8D%AE%E6%8A%A5%E8%A1%A8%E7%95%8C%E9%9D%A2.png" alt="avator"></p>
+<h2 id="production%e6%a8%a1%e5%bc%8f%e4%b8%8b%e5%8c%85%e5%a4%a7%e5%b0%8f">production模式下包大小</h2>
+<p><img src="file:///e:\vue-webshop\vueshop\vueshop\%E9%A1%B9%E7%9B%AE%E6%95%88%E6%9E%9C\build%E5%90%8E%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F.png" alt="avator"></p>
+
+    </body>
+    </html>
