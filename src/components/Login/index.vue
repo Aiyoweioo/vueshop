@@ -17,6 +17,23 @@
                     <!-- 密码 -->
                     <el-input v-model='loginForm.password' prefix-icon="iconfont icon-3702mima" type='password'></el-input>
                 </el-form-item>
+                <el-form-item prop="vertifyCode">
+                    <!-- 验证码 -->
+                    <div class="vertify-code">
+                        <el-row :span="24">
+                            <el-col :span="12">
+                                <el-input v-model="loginForm.vertifyCode" auto-complete="off" placeholder="请输入验证码" size=""
+                                @keyup.enter.native="login('loginForm')"></el-input>
+                            </el-col>
+                            <el-col :span="6" :offset="4">
+                                <div class="login-code" @click="refreshCode">
+                                <!--验证码组件-->
+                                    <s-indentify :identifyCode="identifyCode" contentWidth=130 contentHeight=40></s-indentify>
+                                </div>
+                            </el-col>
+                        </el-row>
+                    </div>
+                </el-form-item>
                 <el-form-item class="btns">
                     <!-- 按钮 -->
                     <el-button type="primary" @click="login">登录</el-button>
@@ -30,14 +47,31 @@
 </template>
 
 <script>
+import SIndentify from './indentify'
+
 export default {
     name: 'Login',
+    components: {
+        's-indentify': SIndentify
+    },
     data(){
+        // 验证码自定义验证规则
+        const validateVerifycode = (rule, value, callback) => {
+            if (value === '') {
+                callback(new Error('请输入验证码'))
+            } else if (value !== this.identifyCode) {
+                // console.log('validateVerifycode:', value)
+                callback(new Error('验证码不正确!'))
+            } else {
+                callback()
+            }
+        }
         return{
             //登陆表单的数据绑定对象
             loginForm:{
-                username:'admin',
-                password: '123456'
+                username:'',
+                password: '',
+                vertifyCode: ''
             },
             //表单验证
             loginFormRules:{
@@ -48,16 +82,22 @@ export default {
                 password: [
                     { required: true, message: '请输入密码', trigger: 'blur'},
                     { min: 6, max: 15, message: '长度在6到15个字符', trigger: 'blur'}
-                ]
+                ],
+                vertifyCode: [{ required: true, validator: validateVerifycode, trigger: 'blur'}]
             },
             // 提示
-            notiftyObj: null
+            notiftyObj: null,
+            identifyCodes: '123456789',
+            identifyCode: '' // 生成的验证码
         }
     },
     mounted () {
+        // 保证页面只显示一次提示
         if (!window.sessionStorage.getItem('notifyLogin')) {
             this.webShopTip()
         }
+        // 验证码初始化
+        this.refreshCode()
     },
     methods:{
         //点击重置登录表单
@@ -96,6 +136,19 @@ export default {
                 duration: 0
             });
             window.sessionStorage.setItem('notifyLogin',this.notifyObj.message)
+        },
+        randomNum (min, max) {
+            return Math.floor(Math.random() * (max - min) + min)
+        },
+        makeCode (o, l) {
+            for (let i = 0; i < l; i++) {
+                this.identifyCode += this.identifyCodes[this.randomNum(0, this.identifyCodes.length)]
+            }
+            // console.log(this.identifyCode)
+        },
+        refreshCode () {
+            this.identifyCode = ''
+            this.makeCode(this.identifyCodes, 4)
         }
     }
 }
@@ -139,7 +192,12 @@ export default {
 
     .btns{
         display: flex;
-        justify-content: flex-end;
+        justify-content: flex-start;
+        .el-button {
+            margin-right: 20px;
+            vertical-align: middle;
+            text-align: center;
+        }
     }
 }
 
@@ -150,5 +208,7 @@ export default {
     padding: 0 20px;
     box-sizing: border-box;
 }
-
+.login-code {
+    margin-top: -5px;
+}
 </style>

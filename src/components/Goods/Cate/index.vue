@@ -229,7 +229,7 @@ export default {
             //console.log(this.selectedKeys)
             //如果selectedKeys数组中的length大于0，就说明选中的是父级分类
             //反之，就说明没有选中任何父级分类
-            if(this.selectedKeys.length > 0){
+            if(this.selectedKeys.length > 0){ // 选中了父级分类
                 //父级分类的id
                 this.addCateForm.cat_pid = this.selectedKeys[this.selectedKeys.length -1]
                 //为当前分类的等级赋值
